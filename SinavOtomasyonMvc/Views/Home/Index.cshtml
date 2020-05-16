@@ -1,0 +1,59 @@
+﻿@using SinavOtomasyonMvc.Models;
+@model IEnumerable<Ogrenci>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h3>SINAV OTOMASYON</h3>
+    </div>
+    @if (Session["Admin"] == null)
+    {
+        <div>
+            <h3>İşlem yapabilmek için giriş yapınız!</h3>
+        </div>
+    }
+    <br />
+    @if (Session["Admin"] != null)
+    {
+        <h1>@Session["Admin"] Hoş Geldiniz</h1>
+    }
+    <br />
+
+    <table style="width:100%">
+        <tr>
+            <td>Ad</td>
+            <td>Soyad</td>
+            <td>Kullanıcı Adı</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Ad</td>
+                <td>@item.Soyad</td>
+                <td>@item.KullaniciAdi</td>
+                <td>
+                    <a href="/Ogrenci/OgrenciSil/@item.Id" class="btn btn-sm btn-danger" onclick="return confirm('Bu öğrenciyi silmek istediğinizden emin misiniz?')">Sil</a>
+
+                    <a href="/Ogrenci/Duzenle/@item.Id" class="btn btn-sm btn-primary">Düzenle</a>
+                </td>
+            </tr>
+        }
+    </table>
+    @if (Session["Admin"] != null)
+    {
+        <div>
+            <input type="button" value="Öğrenci Ekle" />
+        </div>
+    }
+</body>
+</html>

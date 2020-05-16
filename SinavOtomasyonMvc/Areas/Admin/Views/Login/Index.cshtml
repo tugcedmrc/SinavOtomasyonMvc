@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin Girişi</title>
+</head>
+<body>
+    <div>
+        <form method="post">
+            @Html.Label("Kullanıcı Adı: ")
+            @Html.TextBox("KullaniciAd")
+            <br />
+            @Html.Label("Şifre: ")
+            @Html.Password("Sifre")
+            <br />
+            <input type="submit" value="Giriş Yap" />
+        </form>
+    </div>
+</body>
+</html>
