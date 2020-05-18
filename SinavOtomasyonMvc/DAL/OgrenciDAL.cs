@@ -79,6 +79,32 @@ namespace SinavOtomasyonMvc.DAL
             return null;
         }
 
+        public static bool OgrenciGuncelle(Ogrenci ogrenci)
+        {
+            SinavContext ctx = new SinavContext();
+            var ogr = ctx.Ogrencis.Where(o => o.Id == ogrenci.Id).FirstOrDefault();
+            if (ogr != null)
+            {
+                ogr.Ad = ogrenci.Ad;
+                ogr.Soyad = ogrenci.Soyad;
+                ogr.KullaniciAdi = ogrenci.KullaniciAdi;
+                ogr.Sifre = ogrenci.Sifre;
 
+                int sonuc = ctx.SaveChanges();
+                if (sonuc > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
     }
 }

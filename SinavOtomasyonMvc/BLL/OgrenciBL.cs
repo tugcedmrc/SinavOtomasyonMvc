@@ -33,34 +33,11 @@ namespace SinavOtomasyonMvc.BLL
             }
         }
 
-        public static bool OgrenciGuncelle(Ogrenci o, int OgrenciId)
+        public static bool OgrenciGuncelle(Ogrenci o)
         {
             try
             {
-                SinavContext ctx = new SinavContext();
-                Ogrenci ogrenci =
-                    ctx.Ogrencis.Find(OgrenciId);
-                if (ogrenci != null)
-                {
-                    ogrenci.Ad = o.Ad;
-                    ogrenci.Soyad = o.Soyad;
-                    ogrenci.KullaniciAdi = o.KullaniciAdi;
-                    ogrenci.Sifre = o.Sifre;
-                    int sonuc = ctx.SaveChanges();
-                    if (sonuc > 0)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-
-                else
-                {
-                    return false;
-                }
+                return OgrenciDAL.OgrenciGuncelle(o);
             }
             catch (Exception)
             {

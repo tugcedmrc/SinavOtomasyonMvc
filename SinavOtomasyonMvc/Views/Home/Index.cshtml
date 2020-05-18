@@ -2,7 +2,7 @@
 @model IEnumerable<Ogrenci>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -20,6 +20,8 @@
     {
         <div>
             <h3>İşlem yapabilmek için giriş yapınız!</h3>
+            <a href="/Admin/Login/AdminEkle" class="btn btn-secondary">Admin Ekle</a>
+            <a href="/Admin" class="btn btn-primary">Giriş</a>
         </div>
     }
     <br />
@@ -41,18 +43,22 @@
                 <td>@item.Ad</td>
                 <td>@item.Soyad</td>
                 <td>@item.KullaniciAdi</td>
-                <td>
-                    <a href="/Ogrenci/OgrenciSil/@item.Id" class="btn btn-sm btn-danger" onclick="return confirm('Bu öğrenciyi silmek istediğinizden emin misiniz?')">Sil</a>
+                @if (Session["Admin"] != null)
+                {
+                    <td>
+                        <a href="/Ogrenci/OgrenciSil/@item.Id" class="btn btn-sm btn-danger" onclick="return confirm('Bu öğrenciyi silmek istediğinizden emin misiniz?')">Sil</a>
 
-                    <a href="/Ogrenci/Duzenle/@item.Id" class="btn btn-sm btn-primary">Düzenle</a>
-                </td>
+                        <a href="/Ogrenci/OgrenciGuncelle/@item.Id" class="btn btn-sm btn-primary">Düzenle</a>
+                    </td>
+                }
+
             </tr>
         }
     </table>
     @if (Session["Admin"] != null)
     {
         <div>
-            <input type="button" value="Öğrenci Ekle" />
+            <a href="/Ogrenci/OgrenciEkle" class="btn btn-primary">Öğrenci Ekle</a>
         </div>
     }
 </body>

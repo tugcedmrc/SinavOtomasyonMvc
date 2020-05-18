@@ -57,30 +57,19 @@ namespace SinavOtomasyonMvc.Controllers
             return Redirect("/Home/Index");
         }
 
-        public ActionResult OgrenciGuncelle(int? id)
+        public ActionResult OgrenciGuncelle(int Id)
         {
-            using (SinavContext ctx = new SinavContext())
-            {
-                var ogr = ctx.Ogrencis.Find(id);
-                return View(ogr);
-            }
+            var sonuc = OgrenciBL.OgrenciGetir(Id);
+            return View(sonuc);
 
         }
 
         [HttpPost]
-        public ActionResult OgrenciGuncelle(Ogrenci ogr)
+        public ActionResult OgrenciGuncelle(Ogrenci ogr, int? OgrenciGuncelleme = 0)
         {
-            using (SinavContext ctx = new SinavContext())
-            {
-                ctx.Entry(ogr).State = EntityState.Modified;
-                int sonuc = ctx.SaveChanges();
-                if (sonuc > 0)
-                {
-                    return RedirectToAction("Index");
-                }
-                return View(ogr);
-            }
-            
+            OgrenciBL.OgrenciGuncelle(ogr);
+            return Redirect("/Home/Index");
+
         }
     }
 }

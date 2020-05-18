@@ -20,5 +20,17 @@ namespace SinavOtomasyonMvc.BLL
                 throw;
             }
         }
+
+        public static bool Ekle(Manager m)
+        {
+            try
+            {
+                return ManagerDAL.Ekle(m);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

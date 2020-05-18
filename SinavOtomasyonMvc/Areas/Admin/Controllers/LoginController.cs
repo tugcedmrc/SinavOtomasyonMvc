@@ -22,7 +22,24 @@ namespace SinavOtomasyonMvc.Areas.Admin.Controllers
             var sonuc = ManagerBL.ManagerKontrol(m);
 
             if (sonuc.ManagerId > 0)
+            {
+                Session["Admin"] = sonuc.KullaniciAd;
                 return Redirect("/Home/Index");
+            }
+            return View();
+        }
+
+        public ActionResult AdminEkle()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AdminEkle(Manager m)
+        {
+            var sonuc = ManagerBL.Ekle(m);
+            if (sonuc)
+                return Redirect("Index");
 
             return View();
         }

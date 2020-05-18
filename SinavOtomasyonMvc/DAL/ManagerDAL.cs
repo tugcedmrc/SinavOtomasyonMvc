@@ -23,5 +23,12 @@ namespace SinavOtomasyonMvc.DAL
                 throw;
             }
         }
+
+        public static bool Ekle(Manager m)
+        {
+            SinavContext ctx = new SinavContext();
+            ctx.Managers.Add(m);
+            return ctx.SaveChanges() > 0;
+        }
     }
 }

@@ -1,0 +1,33 @@
+﻿@model SinavOtomasyonMvc.Models.Ogrenci
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OgrenciGuncelle</title>
+</head>
+<body>
+    <div>
+        <form method="post">
+            @Html.Label("Ad: ")
+            @Html.TextBox("Ad", Model.Ad)
+            <br />
+            @Html.Label("Soyad: ")
+            @Html.TextBox("Soyad", Model.Soyad)
+            <br />
+            @Html.Label("Kullanıcı Adı: ")
+            @Html.TextBox("KullaniciAdi", Model.KullaniciAdi)
+            <br />
+            @Html.Label("Şifre")
+            @Html.TextBox("Sifre", Model.Sifre)
+            <br />
+            <input type="submit" value="Kaydet" />
+            <a href="/Home/Index" class="btn btn-primary">İptal</a>
+        </form>
+    </div>
+</body>
+</html>

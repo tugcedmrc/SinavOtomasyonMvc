@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AdminEkle</title>
+</head>
+<body>
+    <div>
+        <form method="post">
+            @Html.Label("Kullanıcı Ad: ")
+            @Html.TextBox("KullaniciAd")
+            <br />
+            @Html.Label("Şifre: ")
+            @Html.TextBox("Sifre")
+            <br />
+            <input type="submit" value="Kaydet" class="btn btn-success" />
+        </form>
+    </div>
+</body>
+</html>
